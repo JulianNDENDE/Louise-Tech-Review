@@ -1,5 +1,4 @@
-import { View, TextInput, StyleSheet } from 'react-native';
-import { Feather, MaterialCommunityIcons, FontAwesome6 } from '@expo/vector-icons';
+import { View, TextInput, StyleSheet, Image } from 'react-native';
 import { useUser } from '../../context/UserContext';
 import theme from '../../theme';
 
@@ -8,10 +7,13 @@ export default function BasicInfo() {
 
   return (
     <View style={styles.container}>
-      <View style={styles.inputContainer}>
-        <Feather name="calendar" size={18} color={theme.colors.icon} style={{ marginLeft: 5 }} />
+      <View style={[theme.inputContainer, { marginTop: 0 }]}>
+        <Image
+          source={require('../../assets/icons/input/Calendar.png')}
+          style={styles.icon}
+        />
         <TextInput
-          style={styles.input}
+          style={theme.input}
           placeholder="How old are you?"
           placeholderTextColor={theme.colors.placeholder}
           keyboardType="numeric"
@@ -22,10 +24,14 @@ export default function BasicInfo() {
           }))}
         />
       </View>
-      <View style={styles.inputContainer}>
-        <FontAwesome6 name="weight-scale" size={18} color={theme.colors.icon} style={{ marginLeft: 5 }} />
+
+      <View style={theme.inputContainer}>
+        <Image
+          source={require('../../assets/icons/input/Weigh.png')}
+          style={styles.icon}
+        />
         <TextInput
-          style={styles.input}
+          style={theme.input}
           placeholder="How much do you weigh? (kg)"
           placeholderTextColor={theme.colors.placeholder}
           keyboardType="numeric"
@@ -36,10 +42,14 @@ export default function BasicInfo() {
           }))}
         />
       </View>
-      <View style={styles.inputContainer}>
-        <MaterialCommunityIcons name="human-male-height-variant" size={18} color={theme.colors.icon} style={{ marginLeft: 5 }} />
+
+      <View style={theme.inputContainer}>
+        <Image
+          source={require('../../assets/icons/input/Height.png')}
+          style={styles.icon}
+        />
         <TextInput
-          style={styles.input}
+          style={theme.input}
           placeholder="How tall are you? (cm)"
           placeholderTextColor={theme.colors.placeholder}
           keyboardType="numeric"
@@ -50,10 +60,14 @@ export default function BasicInfo() {
           }))}
         />
       </View>
-      <View style={styles.inputContainer}>
-        <Feather name="briefcase" size={18} color={theme.colors.icon} style={{ marginLeft: 5 }} />
+
+      <View style={theme.inputContainer}>
+        <Image
+          source={require('../../assets/icons/input/Job.png')}
+          style={styles.icon}
+        />
         <TextInput
-          style={styles.input}
+          style={theme.input}
           placeholder="What is your job?"
           placeholderTextColor={theme.colors.placeholder}
           value={userData.basicInfo.job || undefined}
@@ -74,17 +88,10 @@ const styles = StyleSheet.create({
     borderRadius: theme.borderRadius,
     marginBottom: theme.spacing.margin
   },
-  input: {
-    flex: 1,
-    color: theme.colors.text,
-    marginLeft: 10
-  },
-  inputContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: theme.colors.inputBackground,
-    padding: theme.spacing.inputPadding,
-    borderRadius: theme.borderRadius,
-    marginTop: theme.spacing.margin
+  icon: {
+    width: 16,
+    height: 16,
+    resizeMode: 'contain',
+    marginLeft: 8,
   },
 });

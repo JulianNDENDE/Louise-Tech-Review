@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import { useRouter } from 'expo-router';
 import { useUser } from '../../context/UserContext';
 import NextButton from '../../components/buttons/NextButton';
+import RemindMeLater from '../../components/buttons/RemindMeLater';
 import theme from '../../theme';
 
 export default function ObjectivesScreen() {
@@ -14,6 +15,12 @@ export default function ObjectivesScreen() {
     'I have an ongoing or future ART treatment',
     'I want to freeze my eggs',
     "I'm unsure of my fertility status & haven't planned a treatment",
+  ];
+
+  const icons = [
+    require('../../assets/icons/onboarding/Seringe.png'),
+    require('../../assets/icons/onboarding/SnowFlake.png'),
+    require('../../assets/icons/onboarding/QuestionMark.png'),
   ];
 
   const handleNext = () => {
@@ -38,35 +45,49 @@ export default function ObjectivesScreen() {
             style={[styles.option, selected === index && styles.selected]}
             onPress={() => setSelected(index)}
           >
+            <Image source={icons[index]} style={styles.icon} />
             <Text style={styles.optionText}>{option}</Text>
           </TouchableOpacity>
         ))}
       </View>
 
-      <NextButton
-        onPress={handleNext}
-        disabled={selected === null}
-      />
+      <View>
+        <NextButton
+          onPress={handleNext}
+          disabled={selected === null}
+        />
+        <RemindMeLater />
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  optionsContainer: {
-    flex: 1,
-    justifyContent: 'center',
-  },
   option: {
+    flexDirection: 'row',
+    alignItems: 'center',
     padding: theme.spacing.padding,
     marginVertical: 5,
     backgroundColor: theme.colors.secondary,
-    borderRadius: theme.borderRadius
+    borderRadius: theme.borderRadius,
+    borderColor: theme.colors.border,
+    borderWidth: 2,
   },
   selected: {
-    backgroundColor: theme.colors.primary
+    backgroundColor: theme.colors.primary,
+    borderColor: theme.colors.borderSelected,
+    borderWidth: 2,
   },
   optionText: {
     color: theme.colors.buttonText,
-    fontSize: 16
+    fontSize: 16,
+    marginLeft: 10,
+    flex: 1,
+    flexWrap: 'wrap',
+  },
+  icon: {
+    width: 20,
+    height: 20,
+    resizeMode: 'contain',
   },
 });

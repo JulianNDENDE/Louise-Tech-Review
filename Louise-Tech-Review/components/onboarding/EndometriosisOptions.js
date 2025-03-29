@@ -48,7 +48,7 @@ const EndometriosisOptions = ({ options, selected, setSelected, setUserData }) =
 const styles = StyleSheet.create({
   optionRow: {
     flexDirection: 'row',
-    justifyContent: 'space-around',
+    justifyContent: 'space-between',
     width: '100%',
     marginVertical: 10,
   },
@@ -60,14 +60,19 @@ const styles = StyleSheet.create({
     padding: theme.spacing.padding,
     backgroundColor: theme.colors.secondary,
     borderRadius: theme.borderRadius,
-    width: '45%',
+    borderColor: theme.colors.border,
+    borderWidth: 2,
+    width: '48%',
   },
   selected: {
     backgroundColor: theme.colors.primary,
+    borderColor: theme.colors.borderSelected,
+    borderWidth: 2,
   },
   optionText: {
     color: theme.colors.text,
     fontSize: 16,
+    fontWeight: 'bold',
     marginTop: 10,
     textAlign: 'center',
   },
@@ -77,7 +82,7 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
   },
   largerOption: {
-    width: '80%',
+    width: '100%',
   },
 });
 

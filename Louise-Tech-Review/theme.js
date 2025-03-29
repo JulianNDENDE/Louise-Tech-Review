@@ -1,16 +1,23 @@
 export default {
   colors: {
     background: '#121212',
-    primary: '#6200EA',
-    secondary: '#222',
+    primary: '#2a2e52',
+    secondary: '#25284a',
+    border: 'rgba(255, 255, 255, 0.1)',
+    borderSelected: 'rgba(50, 197, 255, 0.5)',
     text: '#fff',
     buttonText: '#fff',
-    buttonDisabled: '#444',
-    selected: '#555',
+    buttonDisabled: '#363154',
     icon: '#bbb',
     placeholder: '#bbb',
-    inputBackground: '#333',
-    secondaryBackground: '#222',
+    inputBackground: '#313354',
+    secondaryBackground: '#272b4f',
+    nextButtonBackground: '#363154',
+    nextButtonBorder: [
+      "rgba(255, 193, 7, 0.5)",
+      "rgba(182, 32, 224, 0.5)",
+      "rgba(50, 197, 255, 0.5)"
+    ]
   },
   spacing: {
     padding: 20,
@@ -19,12 +26,12 @@ export default {
     inputPadding: 2,
     containerPadding: 10,
   },
-  borderRadius: 15,
+  borderRadius: 16,
   container: {
     flex: 1,
-    justifyContent: 'space-between',
+    justifyContent: "space-between",
     padding: 20,
-    backgroundColor: '#121212',
+    backgroundColor: "transparent",
   },
   title: {
     fontSize: 32,
@@ -36,7 +43,8 @@ export default {
   },
   subtitle: {
     fontSize: 14,
-    color: '#bbb',
+    color: '#FFFFFF',
+    fontWeight: '400',
     marginBottom: 20,
     alignSelf: 'center',
     textAlign: 'center',
@@ -56,14 +64,14 @@ export default {
   input: {
     flex: 1,
     color: '#fff',
-    marginLeft: 10,
+    marginLeft: 8,
   },
   inputContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#333',
-    padding: 4,
+    backgroundColor: '#313354',
+    padding: 2,
     borderRadius: 8,
-    marginTop: 5,
+    marginTop: 10,
   },
 };

@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text } from 'react-native';
 import { useRouter } from 'expo-router';
 import { useUser } from '../../context/UserContext';
 import theme from '../../theme';
 import NextButton from '../../components/buttons/NextButton';
+import RemindMeLater from '../../components/buttons/RemindMeLater.js'
 import EndometriosisOptions from '../../components/onboarding/EndometriosisOptions';
 
 export default function EndometriosisScreen() {
@@ -29,17 +30,13 @@ export default function EndometriosisScreen() {
         />
       </View>
 
-      <NextButton
-        onPress={() => router.push('/onboarding/medication')}
-        style={styles.nextButton}
-        disabled={selected === null}
-      />
+      <View>
+        <NextButton
+          onPress={() => router.push('/onboarding/medication')}
+          disabled={selected === null}
+        />
+        <RemindMeLater />
+      </View>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  nextButton: {
-    marginTop: theme.spacing.verticalMargin,
-  },
-});

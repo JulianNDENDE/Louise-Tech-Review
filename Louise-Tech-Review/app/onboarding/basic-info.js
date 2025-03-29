@@ -1,9 +1,10 @@
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text } from 'react-native';
 import { useRouter } from 'expo-router';
 import BasicInfo from '../../components/onboarding/BasicInfo';
 import { useUser } from '../../context/UserContext';
 import theme from '../../theme';
 import NextButton from '../../components/buttons/NextButton';
+import RemindMeLater from '../../components/buttons/RemindMeLater';
 
 export default function BasicInfoScreen() {
   const router = useRouter();
@@ -16,34 +17,21 @@ export default function BasicInfoScreen() {
     userData.basicInfo.job?.trim() !== '';
 
   return (
-    <View style={styles.container}>
+    <View style={theme.container}>
       <View>
         <Text style={theme.title}>Some basic information about you</Text>
         <Text style={theme.subtitle}>These factors can be relevant in tailoring care and advice specific to your needs.</Text>
         <BasicInfo />
       </View>
 
-      <NextButton
-        onPress={() => router.push('/onboarding/endometriosis')}
-        style={styles.nextButton}
-        disabled={!isFormComplete}
-      />
+      <View>
+        <NextButton
+          onPress={() => router.push('/onboarding/endometriosis')}
+          disabled={!isFormComplete}
+        />
+        <RemindMeLater />
+      </View>
     </View>
   );
 }
 
-const styles = StyleSheet.create({
-  container: { 
-    flex: 1, 
-    padding: theme.spacing.padding, 
-    backgroundColor: theme.colors.background, 
-    justifyContent: 'space-between',
-  },
-  formContainer: {
-    flex: 1,
-    justifyContent: 'center',
-  },
-  nextButton: { 
-    marginTop: theme.spacing.verticalMargin,
-  },
-});

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, StyleSheet } from 'react-native';
 import { useRouter } from 'expo-router';
 import HomeButton from '../../components/buttons/HomeButton';
 import NextButton from '../../components/buttons/NextButton';
@@ -21,8 +21,8 @@ export default function CompletionScreen() {
             marginVertical: 20,
           }}
         />
-        <Text style={theme.title}>It’s all about you</Text>
-        <Text style={theme.subtitle}>
+        <Text style={styles.biggerTitle}>It’s all about you</Text>
+        <Text style={styles.biggerSubtitle}>
           {"Thank you for answering those questions, we will be able to tailor your experience!\n\nLet’s now move to your past fertility history."}
         </Text>
       </View>
@@ -30,13 +30,30 @@ export default function CompletionScreen() {
       <View style={theme.buttonContainer}>
         <HomeButton
           onPress={() => router.push('/')}
-          style={{ width: '20%' }}
         />
-        <NextButton
-          onPress={() => router.push('/')}
-          style={{ width: '75%' }}
-        />
+        <View style={{ flex: 1, marginLeft: 10 }}>
+          <NextButton onPress={() => router.push('/')} />
+        </View>
       </View>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  biggerTitle: {
+    fontSize: 40,
+    fontWeight: 'bold',
+    color: '#fff',
+    marginBottom: 10,
+    alignSelf: 'center',
+    textAlign: 'center',
+  },
+  biggerSubtitle: {
+    fontSize: 16,
+    color: '#FFFFFF',
+    fontWeight: '400',
+    marginBottom: 20,
+    alignSelf: 'center',
+    textAlign: 'center',
+  },
+});
